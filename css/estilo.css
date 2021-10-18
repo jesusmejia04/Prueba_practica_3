@@ -1,0 +1,67 @@
+body {
+    font: 16px/1.4 Tahoma,Helvetica,Kalimati,Sans-serif;
+    background: url(../img/fondo2.jpg);
+    background-attachment: fixed;
+    background-size:100%;
+}
+#title{
+  font-size: 50px;
+  font-weight: 700;
+  color: #fec107;
+  text-align: center;
+    margin-top: 5%;
+}
+#peli1{
+	background-color: white;
+	margin-left: 50em;
+	width: 30em;
+	height: 28em;
+	margin-top: 5em;
+	text-align: justify;
+	padding: 2%;
+}
+#img1{
+	margin-top: -36%;
+	width:45em;
+	height: 30em;
+	margin-right: 50em;
+	background-repeat: no-repeat;
+}
+#peli2{
+	background-color: white;
+	margin-left: 50em;
+	width: 30em;
+	height: 28em;
+	margin-top: 30em;
+	text-align: justify;
+	padding: 2%;
+}
+#img2{
+	width:50em;
+	margin-top: -22em;
+	height: 30em;
+	margin-right: 50em;
+	background-repeat: no-repeat;
+}
+#peli3{
+	background-color: white;
+	margin-left: 50em;
+	width: 30em;
+	height: 28em;
+}
+#img3{
+	width:50em;
+	height: 30em;
+	margin-right: 50em;
+	background-image: url("https://pbs.twimg.com/media/E34WTT4WEAACvNw.jpg");
+	background-repeat: no-repeat;
+}
+.poster{
+	position: absolute;
+}
+h3{
+	text-align: center;
+}
+#formulario{
+	margin-top: 50%;
+}

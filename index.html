@@ -1,9 +1,168 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<title>♦ Películas ♦</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/estilo.css" />
+
+
 </head>
+<style type="text/css">
+	#facturaFinal{
+		background-color: mintcream;
+		border: 1px dotted black;
+		text-align: center;
+		margin: auto;
+		width: 500px;
+		font-family: monospace;
+	}
+</style>
 <body>
+	<div id="container">
+		<h1 id="title">Cine Don Bosco</h1>
+		<div id="pelicula"></div>
+	</div>
+	<div id="formulario">
+		<select onclick="sendPeli(this.value)">
+			<option value="0">-----------------------</option>
+			<option value="1">Venom: Carnage liberado</option>
+			<option value="2">Maligno</option>
+			<option value="3">Space Jam: Una Nueva Era</option>
+		</select>
+
+		<input onKeyDown="return false" type="number" min="1" max="10" onclick="num(this.value)">
+
+		
+		<div id="horFinal">
+		</div>
+
+		<input type="button" value="Crear factura" onclick="facturar();">
+	</div>
+	<div id="facturaFinal">
+		
+	</div>
+	<script type="text/javascript">
+
+var jsonPelis = `
+{
+   	"Peliculas":{
+   		"id1":{
+   			"titulo" : "Venom: Carnage liberado",
+   			"duracion" : "1h 37m",
+   			"clasificacion" : "Acción / Ciencia Ficción",
+   			"linkImg" : "https://w0.peakpx.com/wallpaper/73/319/HD-wallpaper-venom-2-let-there-be-carnage-new-poster.jpg",
+   			"butacas" : "Tradicionales",
+   			"horarios" : "<input type='button' class='botonHorario' value='8:00 AM'><input type='button' class='botonHorario' value='10:00 AM'><input type='button' class='botonHorario' value='12:00 M'><input type='button' class='botonHorario' value='2:00 PM'><input type='button' class='botonHorario' value='4:00 PM'><input type='button' class='botonHorario' value='6:00 PM'><input type='button' class='botonHorario' value='8:00 PM'>"
+   		},
+   		"id2":{
+   			"titulo" : "Maligno",
+   			"duracion" : "1h 51m",
+   			"clasificacion" : "Terror / Suspenso",
+   			"linkImg" : "https://image.tmdb.org/t/p/original/bouOHVCnlvQQyCGZWQE1XXDL9uv.jpg",
+   			"butacas" : "Tradicionales",
+   			"horarios" : "<input type='button' class='botonHorario' value='8:00 AM'><input type='button' class='botonHorario' value='10:00 AM'><input type='button' class='botonHorario' value='12:00 M'><input type='button' class='botonHorario' value='2:00 PM'><input type='button' class='botonHorario' value='4:00 PM'>"
+   		},
+   		"id3":{
+   			"titulo" : "Space Jam: Una Nueva Era",
+   			"duracion" : "1h 55m",
+   			"clasificacion" : "Infantil / Comedia",
+   			"linkImg" : "https://pbs.twimg.com/media/E34WTT4WEAACvNw.jpg",
+   			"butacas" : "Tradicionales",
+   			"horarios" : "<input type='button' class='botonHorario' value='8:00 AM'><input type='button' class='botonHorario' value='10:00 AM'><input type='button' class='botonHorario' value='12:00 M'><input type='button' class='botonHorario' value='2:00 PM'><input type='button' class='botonHorario' value='4:00 PM'><input type='button' class='botonHorario' value='6:00 PM'><input type='button' class='botonHorario' value='8:00 PM'><input type='button' class='botonHorario' value='10:00 PM'>"
+   		}
+   	}
+
+}`;
+
+var objJson = JSON.parse(jsonPelis);
+
+
+
+
+var cont = "<div id='img1 '> <div id='peli1'><h3>Título: " + objJson.Peliculas.id1.titulo + "</h3><br>";
+cont +=    "<span>Duración: " + objJson.Peliculas.id1.duracion + "</span>";
+cont +=    "<span>Clasificación: " + objJson.Peliculas.id1.clasificacion + "</span>";
+cont +=	   "<table><tr><td rowspan='2'></td><td colspan='2'>Formato Película (2D) | Butacas: " + objJson.Peliculas.id1.butacas + "</td></tr>";
+cont +=	   "<tr><td colspan='2'>Horarios: <br>" + objJson.Peliculas.id1.horarios + "</td></tr></table></div>";
+cont += "<img id='img1' src='" + objJson.Peliculas.id1.linkImg + "' class='poster'>";
+
+cont +=    "<div id='img2'><div id='peli2'><h3>Título: " + objJson.Peliculas.id2.titulo + "</h3><br>";
+cont +=    "<span>Duración: " + objJson.Peliculas.id2.duracion + "</span>";
+cont +=    "<span>Clasificación: " + objJson.Peliculas.id2.clasificacion + "</span>";
+cont +=	   "<table><tr><td rowspan='2'></td><td colspan='2'>Formato Película (2D) | Butacas: " + objJson.Peliculas.id2.butacas + "</td></tr>";
+cont +=	   "<tr><td colspan='2'>Horarios: <br>" + objJson.Peliculas.id2.horarios + "</td></tr></table></div>";
+cont += "<img id='img2'src='" + objJson.Peliculas.id2.linkImg + "' class='poster'>";
+
+cont +=    " <div id='peli3'><h3>Título: " + objJson.Peliculas.id3.titulo + "</h3><br>";
+cont +=    "<span>Duración: " + objJson.Peliculas.id3.duracion + "</span>";
+cont +=    "<span>Clasificación: " + objJson.Peliculas.id3.clasificacion + "</span>";
+cont +=	   "<table><tr><td rowspan='2'>></td><td colspan='2'>Formato Película (2D) | Butacas: " + objJson.Peliculas.id3.butacas + "</td></tr>";
+cont +=	   "<tr><td colspan='2'>Horarios: <br>" + objJson.Peliculas.id3.horarios + "</td></tr></table></div>";
+cont+= "<img id='img3'src=' https://pbs.twimg.com/media/E34WTT4WEAACvNw.jpg  ' class='poster'";
+
+    
+var peliElegida = ""
+var numTickets
+var horarioFinal
+
+function sendPeli(elegido) {
+	
+	switch(elegido){
+		case "0":
+		document.getElementById('horFinal').innerHTML = ""; 
+		break;
+		case "1":
+		peliElegida = objJson.Peliculas.id1.titulo; 
+		document.getElementById('horFinal').innerHTML = objJson.Peliculas.id1.horarios; 
+		break;
+		case "2":
+		peliElegida = objJson.Peliculas.id2.titulo; 
+		document.getElementById('horFinal').innerHTML = objJson.Peliculas.id2.horarios; 
+		break;
+		case "3":
+		peliElegida = objJson.Peliculas.id3.titulo; 
+		document.getElementById('horFinal').innerHTML = objJson.Peliculas.id3.horarios; 
+		break;
+	}
+	console.log(elegido)
+}
+
+function num(param){
+	numTickets = param;
+}
+
+
+var ventas = 0;
+var vendidos = 0;
+
+
+function facturar(){
+	if(peliElegida == ""){
+		window.alert("No ha seleccionado película")
+	}else{
+		sessionStorage.setItem("peliElegida", peliElegida);
+	  	sessionStorage.setItem("numTickets", numTickets);
+
+	  	var fact = "<br><h1>Factura de compra</h1><br>"
+		fact +=    "<span>----------------------</span><br>"
+		fact +=    "<span>Cant. Tickets: " + sessionStorage.getItem('numTickets') +"</span><br>"
+		fact +=    "<span>Película: " + sessionStorage.getItem('peliElegida') +"</span><br>"
+		fact +=    "<span>----------------------</span><br>"
+		fact +=    "<span>Total de ventas realizadas en la sesión: " + (ventas += 1) +  "</span><br>"
+		fact +=    "<span>Total de tickets vendidos en la sesión: " + (vendidos += parseInt(sessionStorage.getItem('numTickets'),10)) +  "</span><br><br><br>"
+
+		document.getElementById('facturaFinal').innerHTML = fact;
+	}
+	
+}
+
+
+
+$(document).ready();
+    $("#pelicula").html(cont);  
+
+	</script>
 
 </body>
 </html>
