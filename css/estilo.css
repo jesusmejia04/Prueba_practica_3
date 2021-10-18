@@ -21,9 +21,9 @@ body {
 	padding: 2%;
 }
 #img1{
-	margin-top: -36%;
-	width:45em;
-	height: 30em;
+	margin-top: -37%;
+	width:50em;
+	height: 32em;
 	margin-right: 50em;
 	background-repeat: no-repeat;
 }
@@ -32,13 +32,13 @@ body {
 	margin-left: 50em;
 	width: 30em;
 	height: 28em;
-	margin-top: 30em;
+	margin-top: 40em;
 	text-align: justify;
 	padding: 2%;
 }
 #img2{
 	width:50em;
-	margin-top: -22em;
+	margin-top: -30em;
 	height: 30em;
 	margin-right: 50em;
 	background-repeat: no-repeat;
@@ -48,12 +48,14 @@ body {
 	margin-left: 50em;
 	width: 30em;
 	height: 28em;
+	margin-top: 10em;
 }
 #img3{
 	width:50em;
-	height: 30em;
+	height: 28em;
 	margin-right: 50em;
-	background-image: url("https://pbs.twimg.com/media/E34WTT4WEAACvNw.jpg");
+	margin-top: -33%;
+	background-image: url('https://pbs.twimg.com/media/E34WTT4WEAACvNw.jpg');
 	background-repeat: no-repeat;
 }
 .poster{
